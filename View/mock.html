@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Mock/bootstrap-4.6.2-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/Mock/fontawesome-free-5.15.4-web/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Document</title>
+    <style>
+        #image-container {
+            width: 2690px;
+            height: 330px;
+            border: 1px solid hsl(92, 88%, 51%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        #image-container img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        /* Ẩn phần tử đầu vào tệp mặc định */
+        #image-input {
+            display: none;
+        }
+
+        #lists {
+            height: 847px;
+            /* Chiều cao của col-6 */
+            overflow-y: auto;
+            /* Sử dụng thanh cuộn khi nội dung dài hơn */
+        }
+
+        #fixed_top_danhSach {
+            background-color: white;
+            width: 100px;
+            height: max-content;
+            top: 135px;
+            left: 50px;
+        }
+
+        .error_html {
+            margin: 0px;
+            color: red
+        }
+
+        #nganTimKiem {
+            height: 388px;
+        }
+
+        #nganThongTinHocSinh {
+            height: 544px;
+        }
+
+        #nganThongTinPhuHuynh {
+            height: 605px;
+        }
+
+        #nganHinhAnh {
+            height: 494px;
+        }
+
+        #nganTrangThaiHocSinh {
+            height: 655px;
+        }
+
+
+        .border {
+            position: relative;
+            padding-top: 20px;
+        }
+
+        .text-title {
+            position: absolute;
+            top: -13px;
+            left: 10px;
+            background: white;
+            padding: 0 5px;
+        }
+
+        .nav .nav-link {
+            color: black;
+        }
+
+        .outline_dark_lists {
+            border: none;
+            display: flex;
+            justify-content: start;
+            color: black;
+            font-weight: bold;
+        }
+
+        #image-input,
+        .imagesl:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid p-3">
+
+
+        <div class="row">
+            <div class="col">
+
+                <div class="border border-dark p-2 bg-secondary">
+                    <div class="row">
+                        <div class="col-6">
+                            <h3 style="margin: 0px; color: white;">QUAN LY HOC SINH</h3>
+                        </div>
+                        <div class="col-6 d-flex justify-content-end align-items-center">
+                            <i class="fas fa-window-close mr-2"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+
+                <div class="border border-dark bg-light">
+                    <nav>
+                        <div class="nav nav-tabs bg-light" style="padding-left: 50px;" id="nav-tab" role="tablist">
+
+                            <button class="nav-link active btn-outline-secondary" id="nav-home-tab" data-toggle="tab"
+                                data-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                                aria-selected="true">
+                                <b>Danh sach hoc sinh</b>
+                            </button>
+
+                            <button class="nav-link btn-outline-secondary" id="nav-profile-tab" data-toggle="tab"
+                                data-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
+                                aria-selected="false">
+                                <b>Quan ly hoc sinh</b>
+                            </button>
+
+                        </div>
+                    </nav>
+
+                    <div class="tab-content" id="nav-tabContent">
+
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                            aria-labelledby="nav-home-tab">
+                            <div class="row p-3 mt-4">
+
+                                <!-- ***Ngăn Danh sách và Tìm kiếm -->
+                                <div class="col-3">
+                                    <!-- ***Danh sách -->
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="border border-dark p-3">
+
+                                                <p class="text-title bg-light"><b class="text-danger">Danh sach</b></p>
+
+                                                <div id="lists" class="border border-success p-3"
+                                                    style="background-color: white;">
+
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Ho Binh</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Tran Van Quan</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Dang Minh Tai</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Tran Minh Hieu</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Van Tung</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Huynh Van Tam</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Huynh Van Tieng</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Tran Van Song</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Dang THi Yen</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Ngoc Yen</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">My Duyen</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Van Thanh</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Ha Thi Hang</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Thanh Long</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Vo Thi Diem</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Thanh Huyen</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Thuy Ha</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Thi Cam</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Ngan Hanh</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Ngoc Vi</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Thi Lien</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Thanh Ha</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Ngoc Ha</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Ngoc Hai</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Khanh Van</button>
+                                                    <button type="button" class="col-12 btn btn-outline-dark ">Ngoc Van</button>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ***Tìm kiếm -->
+                                    <div class="row mt-3">
+                                        <div class="col">
+                                            <div class="border border-dark p-3" id="nganTimKiem">
+
+                                                <!-- căn đều bên phải -->
+                                                <div class="pr-4">
+
+                                                    <form action="">
+                                                        <!-- Chọn Nam hoc -->
+                                                        <div class="row form-inline">
+                                                            <label for="namHoc" style="margin: 0px 23px;"> <b>Nam
+                                                                    hoc</b></label>
+                                                            <select id="namHoc" name="namHoc"
+                                                                class="col-7 form-control">
+                                                                <option value="2014-2015">2014-2015</option>
+                                                                <option value="2015-2016">2015-2016</option>
+                                                                <option value="2016-2017">2016-2017</option>
+                                                            </select>
+                                                        </div>
+                                                        <p id="error_namHoc" class="error_html"></p>
+
+                                                        <!-- Chọn Lop hoc -->
+                                                        <div class="row form-inline mt-3">
+                                                            <label for="lopHoc" style="margin: 0px 27px;"> <b>Lop
+                                                                    hoc</b></label>
+
+                                                            <select id="lopHoc" name="lopHoc"
+                                                                class="col-7 form-control">
+                                                                <option value="Mam 1">Mam 1</option>
+                                                                <option value="Mam 2">Mam 2</option>
+                                                                <option value="Mam 3">Mam 3</option>
+                                                            </select>
+                                                        </div>
+                                                        <p id="error_lopHoc" class="error_html"></p>
+
+                                                        <!-- Chọn theo id -->
+                                                        <div class="row form-inline mt-3">
+                                                            <input id="theoId" name="theoId" value="theoId"
+                                                                type="checkbox"
+                                                                style="width:14px; height:14px; margin: 0px 5px;">
+                                                            <label for="theoId" class="ml-2"
+                                                                style="margin-right: 25px;"><b>Theo id</b></label>
+                                                            <input id="theoId" name="theoId" placeholder="Theo id.."
+                                                                type="text" class="col-7 form-control">
+                                                        </div>
+                                                        <p id="error_" class="error_html"></p>
+
+                                                        <!-- Chọn theo ten -->
+                                                        <div class="row form-inline mt-3">
+                                                            <input id="theoTen" name="theoTen" value="theoTen"
+                                                                type="checkbox"
+                                                                style="width:14px; height:14px; margin: 0px 5px;">
+                                                            <label for="theoTen" class="ml-2"
+                                                                style="margin-right: 16px;"><b>Theo ten</b></label>
+                                                            <input id="theoTen" name="theoTen" placeholder="Theo ten.."
+                                                                type="text" class="col-7 form-control">
+                                                        </div>
+                                                        <p id="error_" class="error_html"></p>
+
+                                                        <!-- Nút submit mặc định -->
+                                                        <button type="submit" class="btn btn-outline-dark mt-3"
+                                                            style="margin-left: 100px;">
+                                                            <i class="fas fa-search mr-2"></i><b>Tim kiem</b>
+                                                        </button>
+
+                                                    </form>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- ***Ngăn Thông tin và Thêm Sửa xoá -->
+                                <div class="col-9">
+
+                                    <!-- ***row thông tin -->
+                                    <div class="row">
+                                        <div class="col-8">
+
+                                            <!-- ***div thong tin hoc sinh -->
+                                            <div class="border border-dark p-3" id="nganThongTinHocSinh">
+
+                                                <p class="text-title bg-light"><b class="text-danger">Thong tin hoc
+                                                        sinh</b></p>
+
+                                                <!-- căn đều bên phải -->
+                                                <div class="pr-4">
+
+                                                    <!-- Ho Ten -->
+                                                    <label style="margin-left: 375px;"><b>Ten than mat</b></label>
+                                                    <div class="row">
+
+                                                        <div class="col-6">
+                                                            <div class="row form-inline">
+                                                                <label class="col-4"><b>Ho ten</b></label>
+                                                                <input id="hoTen" name="hoTen" placeholder="Ho ten.."
+                                                                    type="text" class="form-control col-8">
+                                                            </div>
+                                                            <p id="error_" class="error_html"></p>
+                                                        </div>
+
+                                                        <div class="col-6">
+
+                                                            <div class="row">
+
+                                                                <div class="col-7">
+                                                                    <input id="tenThanMat" name="tenThanMat"
+                                                                        placeholder="Ten than mat.." type="text"
+                                                                        class="form-control">
+                                                                </div>
+
+                                                                <button id="goiTinhButton" type="button"
+                                                                    class="col-5 btn btn-outline-dark">
+                                                                    <i class="fas fa-male mr-3"></i><b>Nam</b>
+                                                                </button>
+                                                                <input id="gioiTinh" type="hidden" value="0">
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Ngay sinh -->
+                                                    <div class="row mt-3">
+
+                                                        <div class="col-5">
+                                                            <div class="row form-inline">
+                                                                <label style="margin: 0px 19px"><b>Ngay sinh</b></label>
+                                                                <input id="ngaySinh" name="ngaySinh"
+                                                                    placeholder="ngaySinh" type="date"
+                                                                    class="form-control">
+                                                            </div>
+                                                            <p id="error_" class="error_html"></p>
+                                                        </div>
+
+                                                        <div class="col-7">
+                                                            <div class="row form-inline">
+                                                                <label class="col-5"><b>Doi tuong uu
+                                                                        tien</b></label>
+                                                                <select id="doiTUong" name="doiTUong"
+                                                                    class="col-7 form-control">
+                                                                    <option selected value="">--Chon doi tuong--
+                                                                    </option>
+                                                                    <option value="Doi tuong 1">Doi tuong 1</option>
+                                                                    <option value="Doi tuong 2">Doi tuong 2</option>
+                                                                    <option value="Doi tuong 3">Doi tuong 3</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Dia chi -->
+                                                    <div class="row form-inline mt-3">
+                                                        <label class="col-2"><b>Dia chi</b></label>
+                                                        <input id="diaChi" name="diaChi" placeholder="Dia chi.."
+                                                            type="text" class="col-10 form-control">
+                                                    </div>
+                                                    <p id="error_" class="error_html"></p>
+
+                                                    <!-- Dan toc - Lop hien tai -->
+                                                    <div class="row mt-3">
+                                                        <div class="col-6">
+                                                            <div class="row form-inline">
+                                                                <label class="col-4"><b>Dan toc</b></label>
+                                                                <select id="danToc" name="danToc"
+                                                                    class="col-8 form-control">
+                                                                    <option selected value="">--Chon Dan toc--</option>
+                                                                    <option value="Kinh">Kinh</option>
+                                                                    <option value="Tay">Tay</option>
+                                                                    <option value="Thai">Thai</option>
+                                                                    <option value="Muong">Muong</option>
+                                                                    <option value="Khmer">Khmer</option>
+                                                                    <option value="Hoa">Hoa</option>
+                                                                </select>
+                                                            </div>
+                                                            <p id="error_" class="error_html"></p>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="row form-inline">
+                                                                <label class="col-5"><b>Lop hien tai</b></label>
+                                                                <select id="lopHienTai" name="lopHienTai"
+                                                                    class="col-7 form-control">
+                                                                    <option selected value="">--Chon Lop hien tai--
+                                                                    </option>
+                                                                    <option value="Mam 1">Mam 1</option>
+                                                                    <option value="Mam 2">Mam 2</option>
+                                                                    <option value="Mam 3">Mam 3</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Ton giao - Nam Hoc -->
+                                                    <div class="row mt-3">
+                                                        <div class="col-6">
+                                                            <div class="row form-inline">
+                                                                <label class="col-4"><b>Ton giao</b></label>
+                                                                <select id="tonGiao" name="tonGiao"
+                                                                    class="col-8 form-control">
+                                                                    <option selected value="">--Chon Ton giao--</option>
+                                                                    <option value="Phat giao">Phat giao</option>
+                                                                    <option value="Dao giao">Dao giao</option>
+                                                                </select>
+                                                            </div>
+                                                            <p id="error_" class="error_html"></p>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="row form-inline">
+                                                                <label class="col-5"><b>Nam Hoc</b></label>
+                                                                <select id="namHoc" name="namHoc"
+                                                                    class="col-7 form-control">
+                                                                    <option selected value="">--Chon Nam Hoc--</option>
+                                                                    <option value="2014-2015">2014-2015</option>
+                                                                    <option value="2015-2016">2015-2016</option>
+                                                                    <option value="2016-2017">2016-2017</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Tinh cach - Thoi quen -->
+                                                    <div class="row form-inline mt-3">
+                                                        <label class="col-2"><b>Tinh cach,<br> Thoi quen</b></label>
+                                                        <!-- thuộc tính rows hiển thị số dòng bau đầu -->
+                                                        <textarea id="tinhCachThoiQuen" name="tinhCachThoiQuen"
+                                                            class="col-10 form-control" rows="2"></textarea>
+                                                    </div>
+                                                    <p id="error_" class="error_html"></p>
+
+                                                </div>
+                                            </div>
+
+
+
+                                            <!-- ***div thong tin phu huynh -->
+                                            <div class="border border-dark p-3 mt-5" id="nganThongTinPhuHuynh">
+
+                                                <p class="text-title bg-light"><b class="text-danger">Thong tin phu
+                                                        huynh</b></p>
+
+                                                <!-- căn đều bên phải -->
+                                                <div class="pr-4">
+
+                                                    <!-- Ho ten cha -->
+                                                    <div class="row mt-3">
+
+                                                        <div class="col-8">
+                                                            <div class="row form-inline">
+                                                                <label style="margin: 0px 44px"><b>Ho ten
+                                                                        cha</b></label>
+                                                                <input id="hoTenCha" name="hoTenCha"
+                                                                    placeholder="Ho ten cha.." type="text"
+                                                                    class="col-7 form-control">
+                                                            </div>
+                                                            <p id="error_" class="error_html"></p>
+                                                        </div>
+
+                                                        <div class="col-4">
+                                                            <div class="row form-inline">
+                                                                <label class="col-6"><b>Nam sinh..</b></label>
+                                                                <input id="namSinhCha" name="namSinhCha"
+                                                                    placeholder="Nam sinh" type="text"
+                                                                    class="col-6 form-control">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <!-- Nghe nghiep cha -->
+                                                    <div class="row form-inline mt-3">
+                                                        <label class="col-3"><b>Nghe nghiep</b></label>
+                                                        <input id="ngheNghiepCha" name="ngheNghiepCha"
+                                                            placeholder="Nghe nghiep.." type="text"
+                                                            class="col-9 form-control">
+                                                    </div>
+                                                    <p id="error_" class="error_html"></p>
+
+                                                    <!-- Ho ten Me -->
+                                                    <div class="row mt-3">
+
+                                                        <div class="col-8">
+                                                            <div class="row form-inline">
+                                                                <label style="margin: 0px 45px"><b>Ho ten me</b></label>
+                                                                <input id="hoTenMe" name="hoTenMe"
+                                                                    placeholder="Ho ten me.." type="text"
+                                                                    class="col-7 form-control">
+                                                            </div>
+                                                            <p id="error_" class="error_html"></p>
+                                                        </div>
+
+                                                        <div class="col-4">
+                                                            <div class="row form-inline">
+                                                                <label class="col-6"><b>Nam sinh</b></label>
+                                                                <input id="namSinhMe" name="namSinhMe"
+                                                                    placeholder="Nam sinh.." type="text"
+                                                                    class="col-6 form-control">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <!-- Nghe nghiep Me -->
+                                                    <div class="row form-inline mt-3">
+                                                        <label class="col-3"><b>Nghe nghiep</b></label>
+                                                        <input id="ngheNghiepMe" name="ngheNghiepMe"
+                                                            placeholder="Nghe nghiep.." type="text"
+                                                            class="col-9 form-control">
+                                                    </div>
+                                                    <p id="error_" class="error_html"></p>
+
+                                                    <!-- Dien thoai -->
+                                                    <div class="row form-inline mt-3">
+                                                        <label class="col-3"><b>Dien thoai</b></label>
+                                                        <input id="dienThoai" name="dienThoai"
+                                                            placeholder="Dien thoai.." type="text"
+                                                            class="col-9 form-control">
+                                                    </div>
+                                                    <p id="error_" class="error_html"></p>
+
+                                                    <!-- Email -->
+                                                    <div class="row form-inline mt-3">
+                                                        <label class="col-3"><b>Email</b></label>
+                                                        <input id="email" name="email" placeholder="Email.." type="text"
+                                                            class="col-9 form-control">
+                                                    </div>
+                                                    <p id="error_" class="error_html"></p>
+
+                                                    <!-- ghi chu cua phu huynh -->
+                                                    <div class="row form-inline mt-3">
+                                                        <label class="col-3"><b>Ghi chu cua <br> phu huynh</b></label>
+                                                        <!-- thuộc tính rows hiển thị số dòng bau đầu -->
+                                                        <textarea id="ghiChuPhuHuynh" name="ghiChuPhuHuynh"
+                                                            class="col-9 form-control" rows="2"></textarea>
+                                                    </div>
+                                                    <p id="error_" class="error_html"></p>
+
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+
+                                        <div class="col-4">
+
+                                            <!-- ***div hinh anh -->
+                                            <div class="border border-dark p-3" id="nganHinhAnh">
+
+                                                <p class="text-title bg-light"><b class="text-danger">Hinh anh</b></p>
+
+                                                <div class="row">
+                                                    <div class="col d-flex justify-content-center align-items-center">
+                                                        <div id="image-container"></div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Mã id -->
+                                                <div class="form-inline mt-3">
+                                                    <label class="mr-2"><b>Ma so(ID)</b></label>
+                                                    <input id="maSoId" name="maSoId" type="text" class="form-control"
+                                                        disabled="true" value="333">
+                                                </div>
+
+                                                <input type="file" id="image-input" accept="image/*">
+                                                <label for="image-input"
+                                                    class="imagesl mt-3 border border-dark rounded btn-outline-dark p-2">
+                                                    <i class="fas fa-folder-open mr-2"></i>
+                                                    <b>Chọn ảnh</b>
+                                                </label>
+                                                <p id="error_" class="error_html"></p>
+
+                                            </div>
+
+                                            <!-- ***div trang thai hoc sinh -->
+                                            <div class="border border-dark p-3 mt-5" id="nganTrangThaiHocSinh">
+
+                                                <p class="text-title bg-light"><b class="text-danger">Trang thai hoc
+                                                        sinh</b></p>
+
+                                                <div class="p-3">
+                                                    <!-- Ngay vao hoc -->
+                                                    <div class="form-group">
+                                                        <label><b>Ngay vao hoc</b></label>
+                                                        <input id="ngayVaoHoc" name="ngayVaoHoc" type="date"
+                                                            class="form-control">
+                                                    </div>
+                                                    <p id="error_" class="error_html"></p>
+
+                                                    <!-- Da nghi hoc -->
+                                                    <div class="form-group">
+                                                        <input id="daNghiHoc" name="daNghiHoc" value="theoId"
+                                                            type="checkbox" style="width:14px; height:14px;">
+                                                        <label for="daNghiHoc" class="ml-2 mr-2"><b>Da nghi
+                                                                hoc</b></label>
+                                                        <br>
+                                                        <label><b>Ngay nghi hoc</b></label>
+                                                        <input id="ngayNghiHoc" name="ngayNghiHoc" type="date"
+                                                            class="form-control">
+                                                    </div>
+                                                    <p id="error_" class="error_html"></p>
+
+                                                    <!-- Bao luu hoc tap -->
+                                                    <div class="form-group">
+                                                        <input id="baoLuuHocTap" name="baoLuuHocTap" value="theoId"
+                                                            type="checkbox" style="width:14px; height:14px;">
+                                                        <label for="baoLuuHocTap" class="ml-2 mr-2"><b>Bao luu hoc
+                                                                tap</b></label>
+                                                        <br>
+                                                        <label><b>Ngay bao luu</b></label>
+                                                        <input id="ngayBaoLuu" name="ngayBaoLuu" type="date"
+                                                            class="form-control">
+                                                        <button type="submit" class="btn btn-outline-dark mt-2">
+                                                            <b>Thuc hien bao luu</b>
+                                                        </button>
+
+                                                    </div>
+                                                    <p id="error_" class="error_html"></p>
+
+                                                    <!-- ghi chu trang thai -->
+                                                    <div class="form-group mt-3">
+                                                        <label><b>Ghi chu trang thai</b></label>
+                                                        <!-- thuộc tính rows hiển thị số dòng bau đầu -->
+                                                        <textarea id="ghiChuTrangThai" name="ghiChuTrangThai"
+                                                            class="form-control" rows="2"></textarea>
+                                                    </div>
+                                                    <p id="error_" class="error_html"></p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <!-- ***row Thêm Sửa xoá  -->
+                                    <div class="row mt-3">
+                                        <div class="col">
+                                            <div class="border border-dark p-3 d-flex justify-content-end">
+
+                                                <!-- Dang ky nhap hoc -->
+                                                <button type="submit" class="btn btn-outline-dark mr-5">
+                                                    <i class="fas fa-id-card mr-2"></i><b>Dang ky nhap hoc</b>
+                                                </button>
+
+                                                <!-- Cap nhap -->
+                                                <button type="submit" class="btn btn-outline-dark mr-5">
+                                                    <i class="fas fa-save mr-2"></i><b>Cap nhap</b>
+                                                </button>
+
+                                                <!-- Xoa -->
+                                                <button type="submit" class="btn btn-outline-dark mr-5">
+                                                    <i class="fas fa-calendar-times mr-2"></i><b>Xoa</b>
+                                                </button>
+
+                                                <!-- Dong lai -->
+                                                <button type="submit" class="btn btn-outline-dark mr-5">
+                                                    <i class="fas fa-window-close mr-2"></i><b>Dong lai</b>
+                                                </button>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            Quan ly hoc sinh
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="/Mock/jquery/jquery-3.5.1.min.js"></script>
+    <script src="/Mock/jquery/popper.min.js"></script>
+    <script src="/Mock/bootstrap-4.6.2-dist/js/bootstrap.min.js"></script>
+    <script src="/Mock/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+        crossorigin="anonymous"></script>
+
+    <script>
+        document.getElementById('image-input').addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    const imageContainer = document.getElementById('image-container');
+                    imageContainer.innerHTML = ''; // Clear previous images
+                    imageContainer.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // logic: khi tích vào thì chuyển sang giới tính khác
+        $("#goiTinhButton").click(
+            function () {
+                // lấy giá trị giới tính ở thời điểm hiện tại để kiểm tra logic
+                const gioiTinh = $("#gioiTinh").val();
+
+                // nếu hiện tại là Nam --> kích vào chuyển qua Nu
+                if (gioiTinh === "0") {
+                    // set lại giá trị mới cho ô input hidden
+                    $("#gioiTinh").val("1");
+
+                    // xoá các phần tử html con trước đó
+                    $("#goiTinhButton").empty();
+
+                    // set lại màu cho button
+                    $("#goiTinhButton").attr("class", "col-5 btn btn-outline-dark");
+
+                    // thêm mới các phần tử html con
+                    $("#goiTinhButton").html("<i class='fas fa-female mr-3'></i><b>Nu</b>");
+
+                    // console.log giá trị ô input hidden ở thời điểm hiện tại sau khi tích để chuyển giới tính
+                    console.log($("#gioiTinh").val());
+                }
+
+                // nếu hiện tại là Nu --> kích vào chuyển qua Nam
+                if (gioiTinh === "1") {
+                    $("#gioiTinh").val("0");
+                    $("#goiTinhButton").empty();
+                    $("#goiTinhButton").attr("class", "col-5  btn btn-outline-dark");
+                    $("#goiTinhButton").html("<i class='fas fa-male mr-3'></i><b>Nam</b>");
+                    console.log($("#gioiTinh").val());
+                }
+
+            }
+        );
+    </script>
+
+</body>
+
+</html>
